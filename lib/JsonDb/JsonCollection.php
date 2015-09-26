@@ -137,11 +137,11 @@ class JsonCollection
     public function find(QueryInterface $query = null)
     {
         if (is_null($query)) {
-            return $this->data;
+            return (count($this->data) == 1 ? $this->data[0] : $this->data);
         }
 
         $results = array();
-        foreach ($this->data as $d) {
+        foreach ((count($this->data) == 1 ? $this->data[0] : $this->data) as $d) {
             if ($query->match($d)) {
                 array_push($results, $d);
             }
