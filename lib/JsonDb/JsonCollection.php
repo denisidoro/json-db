@@ -136,6 +136,7 @@ class JsonCollection
      */
     public function find(QueryInterface $query = null)
     {
+
         if (is_null($query)) {
             return (count($this->data) == 1 ? $this->data[0] : $this->data);
         }

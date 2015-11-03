@@ -6,7 +6,7 @@ class Query implements QueryInterface
 {
     public function __call($name, $arguments)
     {
-        switch($name){
+        switch($name) {
             case 'and':
                 return new QueryAnd($this, $arguments[0]);
                 break;
@@ -31,5 +31,10 @@ class Query implements QueryInterface
     static public function equals($field, $value)
     {
         return new QueryEquals($field, $value);
+    }
+
+    static public function custom($field, $value, $fn)
+    {
+        return new QueryEquals($field, $value, $fn);
     }
 }
